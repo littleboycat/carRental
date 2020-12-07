@@ -41,6 +41,7 @@ priority = raw_input(prompt).lower()
 if priority in categories:
 	print("\nWe will match you with vehicles that fit with your priorities.")
 	print("Your top priority is: " + priority.title() + "\n")
+	
 	if priority == 'color':
 		print("We have cars available in these colors:")
 		for car, aspect in available_cars.items():
@@ -55,11 +56,31 @@ if priority in categories:
 					"Price: $" + str(aspect['price']) + " per day"
 					)
 		
+	if priority == 'brand':
+		print("We have cars available from these brands:")
+		for car, aspect in available_cars.items():
+			print("\t" + aspect['brand'].title())
+		brand_choice = raw_input("\nWhich of these brands do you prefer?\nPlease enter your choice: ").lower()
+		for car, aspect in available_cars.items():
+			if brand_choice in aspect['brand']:
+				print("\nBased on your priorities, we recommend this car:\n" + 
+					aspect['brand'].title() + " " + car.title() + ", with the following characteristics:\n" + 
+					"Seats: " + str(aspect['seats']) + "\n" +
+					"Color: " + aspect['color'].title() + "\n" +
+					"Price: $" + str(aspect['price']) + " per day"
+					)
+	
+	if priority == 'seats':
+		print("We have cars available with these numbers of seats:")
+		for car, aspect in available_cars.items():
+			print("\t" + str(aspect['seats']))
+		seats_choice = raw_input("\nHow many seats do you want to have?\nPlease enter your choice: ").lower()
+		print("\nBased on your priorities, there may be a number of a number of car that we recommend:\n")
+		# for car, aspect in available_cars.items():
+		# 	if int(seats_choice) in aspect['seats']:
+				
 
 
-
-	# elif:	
-		
 
 
 else:
